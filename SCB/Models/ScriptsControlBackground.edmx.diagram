@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="868f7e2a7d9a47c6b1c89ca12f203408" Name="Diagram1" >
+        <EntityTypeShape EntityType="ScriptsControlBackground.Planned" Width="2" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.Task" Width="1.5" PointX="3.25" PointY="0.5" />
+        <AssociationConnector Association="ScriptsControlBackground.PlannedTask" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.Priority" Width="1.5" PointX="5.375" PointY="1.875" />
+        <AssociationConnector Association="ScriptsControlBackground.PriorityPlanned" />
+        <AssociationConnector Association="ScriptsControlBackground.PriorityTask" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.Game" Width="1.5" PointX="7.625" PointY="1.5" />
+        <AssociationConnector Association="ScriptsControlBackground.GamePlanned" />
+        <AssociationConnector Association="ScriptsControlBackground.GameTask" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.User" Width="1.5" PointX="0.75" PointY="5.625" />
+        <AssociationConnector Association="ScriptsControlBackground.UserPlanned" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

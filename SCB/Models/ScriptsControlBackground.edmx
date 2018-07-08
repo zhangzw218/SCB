@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="ScriptsControlBackground.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="ScriptsControlBackgroundTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ScriptsControlBackground" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ScriptsControlBackgroundContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PlannedSet" EntityType="ScriptsControlBackground.Planned" />
+          <EntitySet Name="TaskSet" EntityType="ScriptsControlBackground.Task" />
+          <AssociationSet Name="PlannedTask" Association="ScriptsControlBackground.PlannedTask">
+            <End Role="Planned" EntitySet="PlannedSet" />
+            <End Role="Task" EntitySet="TaskSet" />
+          </AssociationSet>
+          <EntitySet Name="PrioritySet" EntityType="ScriptsControlBackground.Priority" />
+          <AssociationSet Name="PriorityPlanned" Association="ScriptsControlBackground.PriorityPlanned">
+            <End Role="Priority" EntitySet="PrioritySet" />
+            <End Role="Planned" EntitySet="PlannedSet" />
+          </AssociationSet>
+          <AssociationSet Name="PriorityTask" Association="ScriptsControlBackground.PriorityTask">
+            <End Role="Priority" EntitySet="PrioritySet" />
+            <End Role="Task" EntitySet="TaskSet" />
+          </AssociationSet>
+          <EntitySet Name="GameSet" EntityType="ScriptsControlBackground.Game" />
+          <AssociationSet Name="GamePlanned" Association="ScriptsControlBackground.GamePlanned">
+            <End Role="Game" EntitySet="GameSet" />
+            <End Role="Planned" EntitySet="PlannedSet" />
+          </AssociationSet>
+          <AssociationSet Name="GameTask" Association="ScriptsControlBackground.GameTask">
+            <End Role="Game" EntitySet="GameSet" />
+            <End Role="Task" EntitySet="TaskSet" />
+          </AssociationSet>
+          <EntitySet Name="UserSet" EntityType="ScriptsControlBackground.User" />
+          <AssociationSet Name="UserPlanned" Association="ScriptsControlBackground.UserPlanned">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Planned" EntitySet="PlannedSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Planned">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="GameServer" Type="String" Nullable="false" />
+          <Property Name="State" Type="String" Nullable="false" />
+          <Property Name="CreateDate" Type="String" Nullable="false" />
+          <Property Name="TaskSum" Type="String" Nullable="false" />
+          <Property Name="TaskImmVpn" Type="String" Nullable="false" />
+          <Property Name="TaskWideVpn" Type="String" Nullable="false" />
+          <Property Name="RegisterArr" Type="String" Nullable="false" />
+          <Property Name="RemainArr" Type="String" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="ScriptsControlBackground.PlannedTask" FromRole="Planned" ToRole="Task" />
+          <NavigationProperty Name="Priority" Relationship="ScriptsControlBackground.PriorityPlanned" FromRole="Planned" ToRole="Priority" />
+          <Property Name="PriorityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="ScriptsControlBackground.GamePlanned" FromRole="Planned" ToRole="Game" />
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ScriptsControlBackground.UserPlanned" FromRole="Planned" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ModHard" Type="String" Nullable="false" />
+          <Property Name="ModVPN" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Planned" Relationship="ScriptsControlBackground.PlannedTask" FromRole="Task" ToRole="Planned" />
+          <Property Name="PlannedId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Priority" Relationship="ScriptsControlBackground.PriorityTask" FromRole="Task" ToRole="Priority" />
+          <Property Name="PriorityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="ScriptsControlBackground.GameTask" FromRole="Task" ToRole="Game" />
+          <Property Name="ExecutingNum" Type="String" Nullable="false" />
+          <Property Name="CancelNum" Type="String" Nullable="false" />
+          <Property Name="ErrorNum" Type="String" Nullable="false" />
+          <Property Name="TaskSum" Type="String" Nullable="false" />
+          <Property Name="ExecutionDate" Type="String" Nullable="false" />
+          <Property Name="State" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="PlannedTask">
+          <End Type="ScriptsControlBackground.Planned" Role="Planned" Multiplicity="1" />
+          <End Type="ScriptsControlBackground.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planned">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="PlannedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Priority">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Class" Type="String" Nullable="false" />
+          <NavigationProperty Name="Planned" Relationship="ScriptsControlBackground.PriorityPlanned" FromRole="Priority" ToRole="Planned" />
+          <NavigationProperty Name="Task" Relationship="ScriptsControlBackground.PriorityTask" FromRole="Priority" ToRole="Task" />
+        </EntityType>
+        <Association Name="PriorityPlanned">
+          <End Type="ScriptsControlBackground.Priority" Role="Priority" Multiplicity="1" />
+          <End Type="ScriptsControlBackground.Planned" Role="Planned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Planned">
+              <PropertyRef Name="PriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PriorityTask">
+          <End Type="ScriptsControlBackground.Priority" Role="Priority" Multiplicity="1" />
+          <End Type="ScriptsControlBackground.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="PriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Planned" Relationship="ScriptsControlBackground.GamePlanned" FromRole="Game" ToRole="Planned" />
+          <NavigationProperty Name="Task" Relationship="ScriptsControlBackground.GameTask" FromRole="Game" ToRole="Task" />
+          <Property Name="OSType" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="GamePlanned">
+          <End Type="ScriptsControlBackground.Game" Role="Game" Multiplicity="1" />
+          <End Type="ScriptsControlBackground.Planned" Role="Planned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Planned">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameTask">
+          <End Type="ScriptsControlBackground.Game" Role="Game" Multiplicity="1" />
+          <End Type="ScriptsControlBackground.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Planned" Relationship="ScriptsControlBackground.UserPlanned" FromRole="User" ToRole="Planned" />
+        </EntityType>
+        <Association Name="UserPlanned">
+          <End Type="ScriptsControlBackground.User" Role="User" Multiplicity="1" />
+          <End Type="ScriptsControlBackground.Planned" Role="Planned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Planned">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="ScriptsControlBackground" />
+        <Alias Key="Target" Value="ScriptsControlBackground.Store" />
+        <EntityContainerMapping CdmEntityContainer="ScriptsControlBackgroundContainer" StorageEntityContainer="ScriptsControlBackgroundTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
