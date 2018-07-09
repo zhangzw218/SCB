@@ -1,0 +1,130 @@
+﻿@model SCB.Models.PlannedTb
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlannedTb</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameServer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameServer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskSum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskSum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskImmVpn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskImmVpn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskWideVpn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskWideVpn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterArr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterArr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemainArr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemainArr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModHard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModHard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModVPN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModVPN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priority.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priority.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
