@@ -14,10 +14,19 @@ namespace SCB.Models
     
     public partial class tb_User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_User()
+        {
+            this.tb_Plan = new HashSet<tb_Plan>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Age { get; set; }
         public string Six { get; set; }
         public string Role { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_Plan> tb_Plan { get; set; }
     }
 }

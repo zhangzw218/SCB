@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudyController.cs" />
     <Compile Include="Controllers\tb_GameController.cs" />
+    <Compile Include="Controllers\tb_PlanController.cs" />
     <Compile Include="Controllers\tb_UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,6 +236,9 @@
       <DependentUpon>ScriptsControlBackground.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Game.cs">
+      <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Plan.cs">
       <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_User.cs">
@@ -335,6 +339,11 @@
     <Content Include="Views\tb_User\Details.cshtml" />
     <Content Include="Views\tb_User\Edit.cshtml" />
     <Content Include="Views\tb_User\Index.cshtml" />
+    <Content Include="Views\tb_Plan\Create.cshtml" />
+    <Content Include="Views\tb_Plan\Delete.cshtml" />
+    <Content Include="Views\tb_Plan\Details.cshtml" />
+    <Content Include="Views\tb_Plan\Edit.cshtml" />
+    <Content Include="Views\tb_Plan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

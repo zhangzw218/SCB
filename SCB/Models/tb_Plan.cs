@@ -12,19 +12,17 @@ namespace SCB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Game
+    public partial class tb_Plan
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tb_Game()
-        {
-            this.tb_Plan = new HashSet<tb_Plan>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public string OSType { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public bool ModHard { get; set; }
+        public bool ModVpn { get; set; }
+        public string TaskNewArr { get; set; }
+        public string TaskKeepArr { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_Plan> tb_Plan { get; set; }
+        public virtual tb_Game tb_Game { get; set; }
+        public virtual tb_User tb_User { get; set; }
     }
 }

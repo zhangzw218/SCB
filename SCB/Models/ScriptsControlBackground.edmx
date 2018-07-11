@@ -8,6 +8,15 @@
   <EntityContainer Name="ScriptsControlBackgroundStoreContainer">
     <EntitySet Name="tb_GameSet" EntityType="ScriptsControlBackground.Store.tb_GameSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tb_UserSet" EntityType="ScriptsControlBackground.Store.tb_UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tb_PlanSet" EntityType="ScriptsControlBackground.Store.tb_PlanSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="tb_Plantb_Game" Association="ScriptsControlBackground.Store.tb_Plantb_Game">
+      <End Role="tb_Plan" EntitySet="tb_PlanSet" />
+      <End Role="tb_Game" EntitySet="tb_GameSet" />
+    </AssociationSet>
+    <AssociationSet Name="tb_Plantb_User" Association="ScriptsControlBackground.Store.tb_Plantb_User">
+      <End Role="tb_Plan" EntitySet="tb_PlanSet" />
+      <End Role="tb_User" EntitySet="tb_UserSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="tb_GameSet">
     <Key>
@@ -27,6 +36,44 @@
     <Property Name="Six" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="tb_PlanSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModHard" Type="bit" Nullable="false" />
+    <Property Name="ModVpn" Type="bit" Nullable="false" />
+    <Property Name="TaskNewArr" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TaskKeepArr" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="tb_Game_Id" Type="int" Nullable="false" />
+    <Property Name="tb_User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="tb_Plantb_Game">
+    <End Role="tb_Plan" Type="ScriptsControlBackground.Store.tb_PlanSet" Multiplicity="*" />
+    <End Role="tb_Game" Type="ScriptsControlBackground.Store.tb_GameSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Plan">
+        <PropertyRef Name="tb_Game_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tb_Plantb_User">
+    <End Role="tb_Plan" Type="ScriptsControlBackground.Store.tb_PlanSet" Multiplicity="*" />
+    <End Role="tb_User" Type="ScriptsControlBackground.Store.tb_UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Plan">
+        <PropertyRef Name="tb_User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -34,6 +81,15 @@
         <EntityContainer Name="ScriptsControlBackgroundContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_GameSet" EntityType="ScriptsControlBackground.tb_Game" />
           <EntitySet Name="tb_UserSet" EntityType="ScriptsControlBackground.tb_User" />
+          <EntitySet Name="tb_PlanSet" EntityType="ScriptsControlBackground.tb_Plan" />
+          <AssociationSet Name="tb_Plantb_Game" Association="ScriptsControlBackground.tb_Plantb_Game">
+            <End Role="tb_Plan" EntitySet="tb_PlanSet" />
+            <End Role="tb_Game" EntitySet="tb_GameSet" />
+          </AssociationSet>
+          <AssociationSet Name="tb_Plantb_User" Association="ScriptsControlBackground.tb_Plantb_User">
+            <End Role="tb_Plan" EntitySet="tb_PlanSet" />
+            <End Role="tb_User" EntitySet="tb_UserSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tb_Game">
           <Key>
@@ -42,6 +98,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="OSType" Type="String" Nullable="false" />
+          <NavigationProperty Name="tb_Plan" Relationship="ScriptsControlBackground.tb_Plantb_Game" FromRole="tb_Game" ToRole="tb_Plan" />
         </EntityType>
         <EntityType Name="tb_User">
           <Key>
@@ -52,7 +109,30 @@
           <Property Name="Age" Type="String" Nullable="false" />
           <Property Name="Six" Type="String" Nullable="false" />
           <Property Name="Role" Type="String" Nullable="false" />
+          <NavigationProperty Name="tb_Plan" Relationship="ScriptsControlBackground.tb_Plantb_User" FromRole="tb_User" ToRole="tb_Plan" />
         </EntityType>
+        <EntityType Name="tb_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="ModHard" Type="Boolean" Nullable="false" />
+          <Property Name="ModVpn" Type="Boolean" Nullable="false" />
+          <Property Name="TaskNewArr" Type="String" Nullable="false" />
+          <Property Name="TaskKeepArr" Type="String" Nullable="false" />
+          <NavigationProperty Name="tb_Game" Relationship="ScriptsControlBackground.tb_Plantb_Game" FromRole="tb_Plan" ToRole="tb_Game" />
+          <NavigationProperty Name="tb_User" Relationship="ScriptsControlBackground.tb_Plantb_User" FromRole="tb_Plan" ToRole="tb_User" />
+        </EntityType>
+        <Association Name="tb_Plantb_Game">
+          <End Type="ScriptsControlBackground.tb_Plan" Role="tb_Plan" Multiplicity="*" />
+          <End Type="ScriptsControlBackground.tb_Game" Role="tb_Game" Multiplicity="1" />
+        </Association>
+        <Association Name="tb_Plantb_User">
+          <End Type="ScriptsControlBackground.tb_Plan" Role="tb_Plan" Multiplicity="*" />
+          <End Type="ScriptsControlBackground.tb_User" Role="tb_User" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -79,6 +159,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tb_PlanSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ScriptsControlBackground.tb_Plan)">
+        <MappingFragment StoreEntitySet="tb_PlanSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModHard" ColumnName="ModHard" />
+          <ScalarProperty Name="ModVpn" ColumnName="ModVpn" />
+          <ScalarProperty Name="TaskNewArr" ColumnName="TaskNewArr" />
+          <ScalarProperty Name="TaskKeepArr" ColumnName="TaskKeepArr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tb_Plantb_Game" TypeName="ScriptsControlBackground.tb_Plantb_Game" StoreEntitySet="tb_PlanSet">
+      <EndProperty Name="tb_Game">
+        <ScalarProperty Name="Id" ColumnName="tb_Game_Id" />
+      </EndProperty>
+      <EndProperty Name="tb_Plan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tb_Plantb_User" TypeName="ScriptsControlBackground.tb_Plantb_User" StoreEntitySet="tb_PlanSet">
+      <EndProperty Name="tb_User">
+        <ScalarProperty Name="Id" ColumnName="tb_User_Id" />
+      </EndProperty>
+      <EndProperty Name="tb_Plan">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

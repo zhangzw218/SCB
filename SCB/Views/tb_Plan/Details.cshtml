@@ -1,0 +1,66 @@
+﻿@model SCB.Models.tb_Plan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_Plan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModHard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModHard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModVpn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModVpn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskNewArr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskNewArr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskKeepArr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskKeepArr)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
