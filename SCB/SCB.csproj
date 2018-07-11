@@ -210,23 +210,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PlannedTbsController.cs" />
     <Compile Include="Controllers\StudyController.cs" />
+    <Compile Include="Controllers\tb_GameController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\GameTb.cs">
-      <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PlannedTb.cs">
-      <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PriorityTb.cs">
-      <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ScriptsControlBackground.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -242,10 +233,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ScriptsControlBackground.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\TaskTb.cs">
-      <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserTb.cs">
+    <Compile Include="Models\tb_Game.cs">
       <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -294,7 +282,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -331,11 +321,11 @@
     <Content Include="Views\Study\Html.cshtml" />
     <Content Include="Views\Study\JavaScrpts.cshtml" />
     <Content Include="Views\Study\Css.cshtml" />
-    <Content Include="Views\PlannedTbs\Create.cshtml" />
-    <Content Include="Views\PlannedTbs\Delete.cshtml" />
-    <Content Include="Views\PlannedTbs\Details.cshtml" />
-    <Content Include="Views\PlannedTbs\Edit.cshtml" />
-    <Content Include="Views\PlannedTbs\Index.cshtml" />
+    <Content Include="Views\tb_Game\Create.cshtml" />
+    <Content Include="Views\tb_Game\Delete.cshtml" />
+    <Content Include="Views\tb_Game\Details.cshtml" />
+    <Content Include="Views\tb_Game\Edit.cshtml" />
+    <Content Include="Views\tb_Game\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

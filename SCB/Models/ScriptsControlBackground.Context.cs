@@ -25,10 +25,6 @@ namespace SCB.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<PlannedTb> PlannedTbSet { get; set; }
-        public virtual DbSet<TaskTb> TaskTbSet { get; set; }
-        public virtual DbSet<PriorityTb> PriorityTbSet { get; set; }
-        public virtual DbSet<GameTb> GameTbSet { get; set; }
-        public virtual DbSet<UserTb> UserTbSet { get; set; }
+        public virtual DbSet<tb_Game> tb_GameSet { get; set; }
     }
 }
