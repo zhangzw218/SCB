@@ -5,7 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="868f7e2a7d9a47c6b1c89ca12f203408" Name="Diagram1" >
-        <EntityTypeShape EntityType="ScriptsControlBackground.tb_Game" Width="1.5" PointX="4.125" PointY="2.375" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.tb_Game" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.tb_User" Width="1.5" PointX="2.625" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

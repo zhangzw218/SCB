@@ -26,5 +26,6 @@ namespace SCB.Models
         }
     
         public virtual DbSet<tb_Game> tb_GameSet { get; set; }
+        public virtual DbSet<tb_User> tb_UserSet { get; set; }
     }
 }

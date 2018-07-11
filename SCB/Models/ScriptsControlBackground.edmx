@@ -7,6 +7,7 @@
     <Schema Namespace="ScriptsControlBackground.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ScriptsControlBackgroundStoreContainer">
     <EntitySet Name="tb_GameSet" EntityType="ScriptsControlBackground.Store.tb_GameSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tb_UserSet" EntityType="ScriptsControlBackground.Store.tb_UserSet" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="tb_GameSet">
     <Key>
@@ -16,12 +17,23 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OSType" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="tb_UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Six" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ScriptsControlBackground" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="ScriptsControlBackgroundContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_GameSet" EntityType="ScriptsControlBackground.tb_Game" />
+          <EntitySet Name="tb_UserSet" EntityType="ScriptsControlBackground.tb_User" />
         </EntityContainer>
         <EntityType Name="tb_Game">
           <Key>
@@ -30,6 +42,16 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="OSType" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Age" Type="String" Nullable="false" />
+          <Property Name="Six" Type="String" Nullable="false" />
+          <Property Name="Role" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -43,6 +65,17 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="OSType" ColumnName="OSType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ScriptsControlBackground.tb_User)">
+        <MappingFragment StoreEntitySet="tb_UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Six" ColumnName="Six" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
