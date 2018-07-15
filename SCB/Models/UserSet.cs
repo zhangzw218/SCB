@@ -12,19 +12,10 @@ namespace SCB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tb_Plan
+    public partial class UserSet
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public bool ModHard { get; set; }
-        public bool ModVpn { get; set; }
-        public string TaskNewArr { get; set; }
-        public string TaskKeepArr { get; set; }
-        public string ServerArr { get; set; }
-        public string State { get; set; }
-    
-        public virtual tb_Game tb_Game { get; set; }
-        public virtual tb_User tb_User { get; set; }
+        public string Role { get; set; }
     }
 }

@@ -208,8 +208,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiEmptyController.cs" />
+    <Compile Include="Controllers\ApiRW_ActionsController.cs" />
+    <Compile Include="Controllers\EmptyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RW_ActionsController.cs" />
     <Compile Include="Controllers\StudyController.cs" />
     <Compile Include="Controllers\tb_GameController.cs" />
     <Compile Include="Controllers\tb_PlanController.cs" />
@@ -217,6 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -242,6 +247,9 @@
       <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_User.cs">
+      <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSet.cs">
       <DependentUpon>ScriptsControlBackground.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -344,9 +352,12 @@
     <Content Include="Views\tb_Plan\Details.cshtml" />
     <Content Include="Views\tb_Plan\Edit.cshtml" />
     <Content Include="Views\tb_Plan\Index.cshtml" />
+    <Content Include="Views\Empty\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\templateName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RW_Actions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

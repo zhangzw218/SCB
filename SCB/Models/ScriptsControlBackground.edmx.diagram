@@ -7,10 +7,11 @@
       <Diagram DiagramId="868f7e2a7d9a47c6b1c89ca12f203408" Name="Diagram1" >
         <EntityTypeShape EntityType="ScriptsControlBackground.tb_Game" Width="1.5" PointX="0.75" PointY="0.5" />
         <EntityTypeShape EntityType="ScriptsControlBackground.tb_User" Width="1.5" PointX="2.625" PointY="0.5" />
-        <EntityTypeShape EntityType="ScriptsControlBackground.tb_Plan" Width="1.5" PointX="6.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ScriptsControlBackground.tb_Plan" Width="1.5" PointX="4.375" PointY="0.5" />
         <AssociationConnector Association="ScriptsControlBackground.tb_Plantb_Game" />
         <AssociationConnector Association="ScriptsControlBackground.tb_Plantb_User" />
-      </Diagram>
+        <EntityTypeShape EntityType="ScriptsControlBackground.UserSet" Width="1.5" PointX="0.75" PointY="9.125" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

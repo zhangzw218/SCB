@@ -11,32 +11,66 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>tb_Game</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OSType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OSType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OSType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+<div class="form-horizontal">
+    <h4>tb_Game</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.OSType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OSType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OSType, "Android或iOS", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OSType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*x下面这句话的出处：https://www.aliyun.com/jiaocheng/605609.html，用是这么用了，但还没有搞清楚原理*@
+            @*@Html.EditorFor(model => model.OSType, "templateName")*@
+            @*这种用法，在数据库对应字段，允许NULL的时候才能用，不允许NULL的时候不能用，原因不明*@
+            <select name="OSType">
+                <option value="Android">Android</option>
+                <option value="iOS">iOS</option>
+                <option value="Default">Default</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.OSType,"", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+
+
+    @*<form class="form-group">
+            Name:<input type="text" />
+            <br />
+            <br />
+            OSType:
+            <select name="OSType">
+                <option value="Android">Android</option>
+                <option value="iOS">iOS</option>
+            </select>
+            <br />
+            <br />
+            <input type="submit" value="Create" class="btn btn-default" />
+        </form>*@
+
+
+
+</div>
 }
 
 <div>

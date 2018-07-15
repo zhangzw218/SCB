@@ -50,6 +50,7 @@ namespace SCB.Controllers
         {
             if (ModelState.IsValid)
             {
+                tb_Game.AddDate = DateTime.Now;
                 db.tb_GameSet.Add(tb_Game);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,15 +79,18 @@ namespace SCB.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,OSType")] tb_Game tb_Game)
+        public ActionResult Edit([Bind(Include = "Id,Name,OSType")] tb_Game tb_GameI)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tb_Game).State = EntityState.Modified;
+                tb_Game tb_GameTemp = db.tb_GameSet.Find(tb_GameI.Id);
+                tb_GameTemp.Name = tb_GameI.Name;
+                tb_GameTemp.OSType = tb_GameI.OSType;
+                db.Entry(tb_GameTemp).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tb_Game);
+            return View();
         }
 
         // GET: tb_Game/Delete/5

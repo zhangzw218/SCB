@@ -23,6 +23,7 @@ namespace SCB.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string OSType { get; set; }
+        public Nullable<System.DateTime> AddDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Plan> tb_Plan { get; set; }

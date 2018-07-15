@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/11/2018 22:32:23
+-- Date Created: 07/15/2018 23:24:56
 -- Generated from EDMX file: f:\Users\Administrator\source\repos\SCB\SCB\Models\ScriptsControlBackground.edmx
 -- --------------------------------------------------
 
@@ -37,6 +37,9 @@ GO
 IF OBJECT_ID(N'[dbo].[tb_PlanSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[tb_PlanSet];
 GO
+IF OBJECT_ID(N'[dbo].[UserSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -46,7 +49,8 @@ GO
 CREATE TABLE [dbo].[tb_GameSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [OSType] nvarchar(max)  NOT NULL
+    [OSType] nvarchar(max)  NULL,
+    [AddDate] datetime  NULL
 );
 GO
 
@@ -69,8 +73,18 @@ CREATE TABLE [dbo].[tb_PlanSet] (
     [ModVpn] bit  NOT NULL,
     [TaskNewArr] nvarchar(max)  NOT NULL,
     [TaskKeepArr] nvarchar(max)  NOT NULL,
+    [ServerArr] nvarchar(max)  NOT NULL,
+    [State] nvarchar(max)  NOT NULL,
     [tb_Game_Id] int  NOT NULL,
     [tb_User_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'UserSet'
+CREATE TABLE [dbo].[UserSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Role] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -93,6 +107,12 @@ GO
 -- Creating primary key on [Id] in table 'tb_PlanSet'
 ALTER TABLE [dbo].[tb_PlanSet]
 ADD CONSTRAINT [PK_tb_PlanSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserSet'
+ALTER TABLE [dbo].[UserSet]
+ADD CONSTRAINT [PK_UserSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
